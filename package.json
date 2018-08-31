@@ -1,0 +1,19 @@
+{
+  "name": "farq",
+  "version": "0.1.0",
+  "description": "JavaScript pixel-level image comparison library",
+  "main": "main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "mouafa",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "jest": "23.5.0",
+    "pngjs": "3.3.3"
+  },
+  "files": [
+    "lib/"
+  ]
+}
