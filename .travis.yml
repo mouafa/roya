@@ -24,9 +24,12 @@ cache:
     - 'node_modules'
 
 notifications:
-  email: true
   slack:
     secure: $SLACK_TOKEN
+  pushover:
+    api_key: $PO_TOKEN
+    users:
+      - $PO_KEY
 
 deploy:
   - provider: npm
