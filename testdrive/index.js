@@ -1,6 +1,4 @@
 var fs = require('fs')
-var PNG = require('pngjs').PNG
-
 const path = require('path')
 /* npm */
 var fs = require('fs')
