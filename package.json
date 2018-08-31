@@ -10,6 +10,7 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
+    "coveralls": "3.0.2",
     "jest": "23.5.0",
     "pngjs": "3.3.3"
   },

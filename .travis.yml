@@ -1,0 +1,40 @@
+language: node_js
+node_js:
+  - '8'
+
+sudo: false
+
+branches:
+  only:
+    - master
+    - development
+    - patch
+
+install:
+  - yarn
+
+script:
+  - yarn test
+
+after_success:
+  - yarn test --coverage --coverageReporters=text-lcov | npx coveralls
+
+cache:
+  yarn: true
+  directories:
+    - 'node_modules'
+
+notifications:
+  email: true
+  slack:
+    secure: $SLACK_TOKEN
+
+deploy:
+  - provider: npm
+    email: mouafa.ahmed@smartfrog.com
+    api_key:
+      secure: $NPM_TOKEN
+    on:
+      repo: mouafa/roya
+      branch: development
+    skip_cleanup: true
