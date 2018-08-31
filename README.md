@@ -2,6 +2,10 @@
 
 Roya is a small low-level image comparison library.
 
+[![npm version](https://badge.fury.io/js/roya.svg)](https://badge.fury.io/js/roya)
+[![Coverage Status](https://coveralls.io/repos/github/mouafa/roya/badge.svg?branch=master)](https://coveralls.io/github/mouafa/roya?branch=master)
+[![Build Status](https://api.travis-ci.org/mouafa/roya.svg?branch=master)](https://travis-ci.org/mouafa/roya#)
+
 Inspired by [pixelmatch](https://github.com/mapbox/pixelmatch)
 
 ## Installation
