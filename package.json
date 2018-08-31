@@ -1,13 +1,13 @@
 {
-  "name": "farq",
+  "name": "roya",
   "version": "0.1.0",
-  "description": "JavaScript pixel-level image comparison library",
+  "description": "JavaScript low-level image comparison library",
   "main": "main.js",
   "scripts": {
     "test": "jest"
   },
   "author": "mouafa",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {},
   "devDependencies": {
     "jest": "23.5.0",
@@ -16,7 +16,22 @@
   "engines": {
     "node": ">=8.11"
   },
+  "keywords": [
+    "image",
+    "comparison",
+    "diff",
+    "pixel",
+    "regression"
+  ],
   "files": [
     "lib/"
-  ]
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mouafa/roya.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mouafa/roya/issues"
+  },
+  "homepage": "https://github.com/mouafa/roya#readme"
 }
