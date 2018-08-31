@@ -24,7 +24,9 @@ let done = 0
 function doneReading() {
   done++
   if (done < 2) return
+  console.time('diffing')
   const out = diff(img1.data, img2.data)
+  console.timeEnd('diffing')
 
   console.log('out', out)
 

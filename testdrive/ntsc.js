@@ -1,4 +1,4 @@
-const { rgb2yiq, yiq2rgb } = require('./YIQ')
+const { rgb2yiq, yiq2rgb } = require('../lib/YIQ')
 
 function convert(buffer, [YCoef, ICoef, QCoef] = [1, 1, 1]) {
   const length = buffer.length

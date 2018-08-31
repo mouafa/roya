@@ -3,7 +3,7 @@ const path = require('path')
 var fs = require('fs')
 var PNG = require('pngjs').PNG
 /* lib */
-const convert = require('../lib/ntsc')
+const convert = require('./ntsc')
 
 const resolve = file => path.resolve(__dirname, `../img.ignore/${file}`)
 

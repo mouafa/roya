@@ -1,4 +1,4 @@
-const { toPrime, fromPrime, threshold, blendAlpha, blendColors } = require('../lib/util')
+const { toPrime, fromPrime, threshold, blendAlpha, blendColors, highlight } = require('../lib/util')
 
 const white = { solid: [255, 255, 255, 1], trans: [255, 255, 255, 0], semi: [255, 255, 255, 0.5] }
 const black = { solid: [0, 0, 0, 1], trans: [0, 0, 0, 0], semi: [0, 0, 0, 0.5] }
@@ -87,5 +87,23 @@ describe('Util | blendAlpha', () => {
 
   it(`blendAlpha semi blue`, () => {
     expect(blendAlpha(blue.semi)).toEqual([127, 127, 255])
+  })
+})
+
+describe('Util | highlight', () => {
+  it(`highlight in the right position`, () => {
+    const data = Array(4 * 4).fill(0)
+    const clone = [...data]
+
+    const position = 4 * 2 //3rd pixel
+    const distance = 0.8 // diff should be between 0 and 1
+    highlight(data, position, distance)
+
+    const expected = [...data]
+    expected[4 * 2] = expect.any(Number)
+    expected[4 * 2 + 1] = expect.any(Number)
+    expected[4 * 2 + 2] = expect.any(Number)
+    expect(data[4 * 2]).not.toEqual(clone[4 * 2])
+    expect(data).toEqual(expected)
   })
 })
