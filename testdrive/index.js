@@ -13,6 +13,11 @@ diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_solid.png', { h
 diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_transparent.png', { transparent: true, highlightFade: false })
 diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_overlapse.png', { overlapse: true, transparent: true })
 
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_rgb.png', { method: 'rgb', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_rgbTuned.png', { method: 'rgbTuned', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_yiq.png', { method: 'yiq', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_yiqTuned.png', { method: 'yiqTuned', highlightFade: false })
+
 function diff(inputImg1, inputImg2, outputImg, options = {}) {
   var img1 = fs
     .createReadStream(inputImg1)
