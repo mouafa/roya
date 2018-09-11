@@ -1,6 +1,6 @@
 {
   "name": "roya",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "JavaScript low-level image comparison library",
   "main": "main.js",
   "scripts": {
@@ -25,7 +25,8 @@
     "regression"
   ],
   "files": [
-    "lib/"
+    "lib/",
+    "testdrive/"
   ],
   "repository": {
     "type": "git",

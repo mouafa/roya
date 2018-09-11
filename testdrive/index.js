@@ -4,38 +4,50 @@ const path = require('path')
 var fs = require('fs')
 var PNG = require('pngjs').PNG
 /* lib */
-const diff = require('../lib/diff')
+const roya = require('../')
 
-const resolve = file => path.resolve(__dirname, `../img.ignore/${file}`)
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_default.png')
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_higher_threshold.png', { threshold: 0.5 })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_yellow.png', { highlightColor: [255, 255, 0] })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_solid.png', { highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_transparent.png', { transparent: true, highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_overlapse.png', { overlapse: true, transparent: true })
 
-var img1 = fs
-  .createReadStream(resolve('img1.png'))
-  .pipe(new PNG())
-  .on('parsed', doneReading)
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_rgb.png', { method: 'rgb', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_rgbTuned.png', { method: 'rgbTuned', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_yiq.png', { method: 'yiq', highlightFade: false })
+diff('./fixture/img1.png', './fixture/img2.png', './fixture/diff_method_yiqTuned.png', { method: 'yiqTuned', highlightFade: false })
 
-var img2 = fs
-  .createReadStream(resolve('img2.png'))
-  .pipe(new PNG())
-  .on('parsed', doneReading)
+function diff(inputImg1, inputImg2, outputImg, options = {}) {
+  var img1 = fs
+    .createReadStream(inputImg1)
+    .pipe(new PNG())
+    .on('parsed', doneReading)
 
-let done = 0
-function doneReading() {
-  done++
-  if (done < 2) return
-  console.time('diffing')
-  const out = diff(img1.data, img2.data)
-  console.timeEnd('diffing')
+  var img2 = fs
+    .createReadStream(inputImg2)
+    .pipe(new PNG())
+    .on('parsed', doneReading)
 
-  console.log('out', out)
+  let done = 0
+  function doneReading() {
+    done++
+    if (done < 2) return
+    console.time(`diffing ${outputImg} took`)
+    const out = roya(img1.data, img2.data, options)
+    console.timeEnd(`diffing ${outputImg} took`)
 
-  const img = new PNG({
-    width: img1.width,
-    height: img1.height
-  })
-  img.data = out.data
+    // console.log('out', out)
 
-  img
-    .pack()
-    .pipe(fs.createWriteStream(resolve('diff.png')))
-    .on('finish', () => console.log('done'))
+    const img = new PNG({
+      width: img1.width,
+      height: img1.height
+    })
+    img.data = out.data
+
+    img
+      .pack()
+      .pipe(fs.createWriteStream(outputImg))
+      .on('finish', () => console.log(`${outputImg} done`))
+  }
 }
