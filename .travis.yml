@@ -38,15 +38,5 @@ deploy:
       secure: $NPM_TOKEN
     on:
       repo: mouafa/roya
-      branch: master
-    skip_cleanup: true
-
-  - provider: npm
-    email: mouafa.ahmed@smartfrog.com
-    api_key:
-      secure: $NPM_TOKEN
-    on:
-      repo: mouafa/roya
       branch: development
     skip_cleanup: true
-    tag: next
