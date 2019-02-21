@@ -1,4 +1,4 @@
-# Roya
+<p align="center"><img width="auto" src="https://raw.githubusercontent.com/mouafa/roya/master/assets/cover.png"></p>
 
 Roya is a small low-level image comparison library.
 
